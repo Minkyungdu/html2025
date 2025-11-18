@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+     <h1>가위바위보 게임</h1>
+    <div>
+        <button onclick="playGame(1)">가위</button>
+        <button onclick="playGame(2)">바위</button>
+        <button onclick="playGame(3)">보</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function playGame(playerChoice) {
+            const computerChoice = Math.floor(Math.random() * 3) + 1;
+            
+            const choices = ['', '가위', '바위', '보'];
+            const resultDiv = document.getElementById('result');
+
+            if (playerChoice === computerChoice) {
+                resultDiv.innerHTML = `비겼습니다! 당신: ${choices[playerChoice]}, 컴퓨터: ${choices[computerChoice]}`;
+            } else if (
+                (playerChoice === 1 && computerChoice === 3) || 
+                (playerChoice === 2 && computerChoice === 1) || 
+                (playerChoice === 3 && computerChoice === 2)
+            ) {
+                resultDiv.innerHTML = `이겼습니다! 당신: ${choices[playerChoice]}, 컴퓨터: ${choices[computerChoice]}`;
+            } else {
+                resultDiv.innerHTML = `졌습니다! 당신: ${choices[playerChoice]}, 컴퓨터: ${choices[computerChoice]}`;
+            }
+        }
+    </script>
+</body>
+</html>
